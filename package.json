@@ -1,0 +1,49 @@
+{
+  "name": "@vasic-digital/auth-context",
+  "version": "0.1.0",
+  "description": "React AuthProvider and useAuth hook for Catalogizer authentication",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@vasic-digital/catalogizer-api-client": "file:../Catalogizer-API-Client-TS",
+    "@vasic-digital/media-types": "file:../Media-Types-TS"
+  },
+  "devDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.0.0",
+    "@types/react": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "jsdom": "^24.0.0",
+    "react": "^18.2.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  },
+  "keywords": [
+    "catalogizer",
+    "auth",
+    "react",
+    "context",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasic-digital/Auth-Context-React.git"
+  }
+}
