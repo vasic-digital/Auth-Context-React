@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "React AuthProvider and useAuth hook for Catalogizer authentication",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
