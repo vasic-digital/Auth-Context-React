@@ -9,23 +9,45 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import type { User, LoginRequest, RegisterRequest, ChangePasswordRequest, UpdateProfileRequest } from '@vasic-digital/media-types'
 import type { AuthService } from '@vasic-digital/catalogizer-api-client'
 
+/**
+ * Shape of the authentication context value provided by AuthProvider
+ * and consumed via the useAuth hook.
+ */
 export interface AuthContextType {
+  /** The currently authenticated user, or null if logged out. */
   user: User | null
+  /** Whether a user is currently logged in. */
   isAuthenticated: boolean
+  /** True while the initial auth status check is in flight. */
   isLoading: boolean
+  /** Permission strings granted to the current user. */
   permissions: string[]
+  /** Whether the current user has the Admin role. */
   isAdmin: boolean
+  /** Logs in with the given credentials. */
   login: (data: LoginRequest) => Promise<void>
+  /** Registers a new user account. */
   register: (data: RegisterRequest) => Promise<void>
+  /** Logs out and clears stored tokens. */
   logout: () => Promise<void>
+  /** Updates the current user's profile fields. */
   updateProfile: (data: UpdateProfileRequest) => Promise<void>
+  /** Changes the current user's password. */
   changePassword: (data: ChangePasswordRequest) => Promise<void>
+  /** Checks whether the current user has a specific permission. */
   hasPermission: (permission: string) => boolean
+  /** Checks whether the current user can perform an action on a resource. */
   canAccess: (resource: string, action: string) => boolean
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
+/**
+ * Hook that returns the current authentication context. Must be called
+ * within an AuthProvider tree; throws if no provider is found.
+ *
+ * @returns The AuthContextType with user state, auth actions, and permission helpers.
+ */
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext)
   if (context === undefined) {
@@ -46,6 +68,13 @@ export interface AuthProviderProps {
   onError?: (error: Error) => void
 }
 
+/**
+ * Context provider that manages authentication state via React Query mutations
+ * and queries. Wraps the component tree with user session data, login/logout
+ * actions, and permission checking utilities.
+ *
+ * @param props - AuthProviderProps
+ */
 export const AuthProvider: React.FC<AuthProviderProps> = ({
   authService,
   children,
