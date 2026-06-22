@@ -18,8 +18,8 @@
     "react": "^18.0.0"
   },
   "dependencies": {
-    "@vasic-digital/catalogizer-api-client": "file:../Catalogizer-API-Client-TS",
-    "@vasic-digital/media-types": "file:../Media-Types-TS"
+    "@vasic-digital/catalogizer-api-client": "file:../catalogizer_api_client_ts",
+    "@vasic-digital/media-types": "file:../media_types_ts"
   },
   "devDependencies": {
     "@tanstack/react-query": "^5.0.0",
